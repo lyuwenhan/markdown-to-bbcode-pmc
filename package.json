@@ -1,6 +1,6 @@
 {
 	"name": "markdown-to-bbcode-pmc",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Convert Markdown to BBCode for Planet Minecraft.",
 	"type": "module",
 	"main": "./index.js",
@@ -14,6 +14,23 @@
 		"converter"
 	],
 	"license": "MIT",
+	"author": "Wenhan Lyu <lyuwenhan@gmail.com> (https://github.com/lyuwenhan)",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lyuwenhan/markdown-to-bbcode-converter.git"
+	},
+	"bugs": {
+		"url": "https://github.com/lyuwenhan/markdown-to-bbcode-converter/issues"
+	},
+	"homepage": "https://github.com/lyuwenhan/markdown-to-bbcode-converter#readme",
+	"engines": {
+		"node": ">=18"
+	},
+	"files": [
+		"index.js",
+		"README.md",
+		"LICENSE"
+	],
 	"dependencies": {
 		"remark-gfm": "^4.0.1",
 		"remark-parse": "^11.0.0",
