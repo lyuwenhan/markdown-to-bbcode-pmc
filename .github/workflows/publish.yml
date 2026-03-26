@@ -2,8 +2,12 @@ name: Publish npm Package
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
+    paths:
+      - "status.json"
+      - "package.json"
+      - ".github/workflows/publish.yml"
   workflow_dispatch:
 
 permissions:
@@ -22,14 +26,27 @@ jobs:
           node-version: 22
           registry-url: "https://registry.npmjs.org"
 
+      - name: Check status.json
+        id: status
+        run: |
+          node script/index.js >> $GITHUB_OUTPUT
+
       - name: Install dependencies
+        if: steps.status.outputs.needs_update == 'true'
         run: npm ci
 
       - name: Test
+        if: steps.status.outputs.needs_update == 'true'
         run: npm test --if-present
 
       - name: Check package contents
+        if: steps.status.outputs.needs_update == 'true'
         run: npm publish --dry-run
 
       - name: Publish to npm
+        if: steps.status.outputs.needs_update == 'true'
         run: npm publish --provenance
+
+      - name: Skip publish
+        if: steps.status.outputs.needs_update != 'true'
+        run: echo "status.json says needsUpdate=false, skipping publish."
