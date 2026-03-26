@@ -1,11 +1,21 @@
 {
 	"name": "markdown-to-bbcode-pmc",
-	"version": "0.1.1",
+	"version": "1.0.0",
 	"description": "Convert Markdown to BBCode for Planet Minecraft.",
 	"type": "module",
 	"main": "./index.js",
+	"types": "./index.d.ts",
+	"sideEffects": false,
 	"exports": {
-		".": "./index.js"
+		".": {
+			"types": "./index.d.ts",
+			"import": "./index.js",
+			"default": "./index.js"
+		}
+	},
+	"scripts": {
+		"test": "node --test",
+		"prepublishOnly": "npm test"
 	},
 	"keywords": [
 		"markdown",
@@ -28,6 +38,7 @@
 	},
 	"files": [
 		"index.js",
+		"index.d.ts",
 		"README.md",
 		"LICENSE"
 	],

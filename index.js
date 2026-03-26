@@ -3,6 +3,14 @@ import {
 } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
+
+/**
+ * Converts a Markdown string to Planet Minecraft–style BBCode.
+ *
+ * @param {string} markdown Markdown source text.
+ * @returns {string} BBCode output, ending with a newline.
+ * @throws {TypeError} If `markdown` is not a string.
+ */
 export function markdownToBBCode(markdown) {
 	if (typeof markdown !== "string") {
 		throw new TypeError(`markdownToBBCode expected a string, got ${typeof markdown}`)
